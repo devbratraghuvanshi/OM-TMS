@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { ImageController } from './../controller/ImageController';
-import { FileUploader } from './../config/multerConfig';
+import { FileUploader } from './../../config/multerConfig';
 
 export class ImageRouter{
     router: Router;

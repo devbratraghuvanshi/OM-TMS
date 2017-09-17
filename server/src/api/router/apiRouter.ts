@@ -2,12 +2,9 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import * as Passport from 'passport'
 
-import IndexController from './../controller/IndexController'
+import Api from './../controller/apiController'
 import SignUpController  from './../controller/signupController';
-
-
 import  UserRouter  from './userRouter';
-//import  ImageRouter  from './imageRouter';
 
 export class apiRouter {
   router: Router
@@ -25,11 +22,10 @@ export class apiRouter {
    */
   init() {
     var auth = Passport.authenticate('jwt', { session: false});
-    this.router.get('/', IndexController.get);
-    this.router.post('/signup',new SignUpController().signUpUser);
-    this.router.post('/authenticate',new SignUpController().authenticate);
-    this.router.use('/api/v1/user',auth, UserRouter);
-    //this.router.use('/api/v1/image', ImageRouter);
+    this.router.get('/', Api.get);
+    this.router.post('/register',Api.register);
+    this.router.post('/authenticate',Api.authenticate);
+    this.router.use('/user',auth, UserRouter);
   }
 }
 // Create the HeroRouter, and export its configured Express.Router

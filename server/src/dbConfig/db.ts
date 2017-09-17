@@ -15,13 +15,13 @@ export class DB {
     this.db.connect(this.dbURI,{ useMongoClient: true });
     // CONNECTION EVENTS
     // When successfully connected
-    this.db.connection.on('connected', this.OnConnected);
+    this.db.connection.on('connected', this.OnConnected.bind(this));
     // If the connection throws an error
-    this.db.connection.on('error', this.OnError);
+    this.db.connection.on('error', this.OnError.bind(this));
     // When the connection is disconnected
-    this.db.connection.on('disconnected', this.OnDisconnected);
+    this.db.connection.on('disconnected', this.OnDisconnected.bind(this));
     // If the Node process ends, close the Mongoose connection 
-    process.on('SIGINT', this.OnNodeProcessEnd);
+    process.on('SIGINT', this.OnNodeProcessEnd.bind(this));
   }
  private  OnConnected() {
     console.log('Mongoose default connection open');

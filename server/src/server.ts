@@ -12,9 +12,9 @@ public Port:any;
     constructor() {
         this.Port = this.normalizePort(process.env.PORT || 3000);
          Server.listen(this.Port);
-         Server.on('error', this.onError);
-         Server.on('listening', this.onListening);
-          Server.on('uncaughtException', this.onUnCaughtException);
+         Server.on('error', this.onError.bind(this));
+         Server.on('listening', this.onListening.bind(this));
+         Server.on('uncaughtException', this.onUnCaughtException.bind(this));
     }
 
     normalizePort(val: number | string): number | string | boolean {

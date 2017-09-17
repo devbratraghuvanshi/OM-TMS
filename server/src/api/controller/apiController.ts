@@ -3,10 +3,15 @@ import * as utility from "./../../utility/utility"
 import { UserModel } from './../model/user';
 import UserCredential from './../model/userCredential';
 
+export class ApiController {
 
-export class SignUpController {
+  public get(req: Request, res: Response, next: NextFunction) {
+    res.json({
+      message: 'You are at the root level of server API'
+    });
+  }
 
-  public signUpUser(req: Request, res: Response, next: NextFunction) {
+  public register(req: Request, res: Response, next: NextFunction) {
 
     if (!req.body.userId || !req.body.password) {
       res.json({ success: false, msg: 'Please pass user ID and password.' });
@@ -26,13 +31,13 @@ export class SignUpController {
         mobile: req.body.mobile,
       });
 
-      newUserCredential.save().then( () => {
-         // save the user in user table
+      newUserCredential.save().then(() => {
+        // save the user in user table
         return newUser.save();
       }).then(() => {
-        res.json({ success: true, msg: 'Successful created new user.' });
-      },(err) => {
-         return res.json({ success: false, msg: 'Username already exists.' });
+        res.json({ success: true, msg: 'Successfully created new user.' });
+      }, (err) => {
+        return res.json({ success: false, msg: 'Username already exists.' });
       });
 
     }
@@ -66,29 +71,6 @@ export class SignUpController {
     }
   }
 
-  public memberInfo(req: Request, res: Response, next: NextFunction) {
-    var token = utility.getToken(req.headers);
-    if (token) {
-      var decoded = utility.jwtDecode(token);
-      UserModel.findOne({
-        userId: decoded.userId
-      }, function (err, user) {
-        if (err) throw err;
-
-        if (!user) {
-          return res.status(403).send({ success: false, msg: 'Authentication failed. User not found.' });
-        } else {
-          res.json({ success: true, msg: 'Welcome in the member area ' + user.firstName + " " + user.lastName + '!', user: user });
-        }
-      });
-
-    } else {
-      return res.status(403).send({ success: false, msg: 'No token provided.' });
-    }
-
-
-  }
-
 }
 
-export default SignUpController;
+export default new ApiController();
