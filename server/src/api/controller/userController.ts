@@ -1,10 +1,16 @@
 import { Request, Response } from 'express';
 import { Model } from 'mongoose';
-import { UserModel } from './../model/user';
+import { IUserModel } from './../model/user';
 export class UserController {
 
+    UserModel:Model<IUserModel>;
+    
+    constructor(model :Model<IUserModel>){
+        this.UserModel = model;
+    }
+
     public add(req: Request, res: Response) {
-        let newUser = new UserModel(req.body);
+        let newUser = new this.UserModel(req.body);
         newUser.save().then((user) => {
             res.status(200);
             res.send(user);
@@ -15,7 +21,7 @@ export class UserController {
     }
 
     public get(req: Request, res: Response) {
-        UserModel.find((err, users) => {
+        this.UserModel.find((err, users) => {
             if (err) {
                 res.status(500);
                 res.send({ message: "internal server error", status: false, err: err });
@@ -27,7 +33,7 @@ export class UserController {
     }
 
     public getById(req: Request, res: Response) {
-        UserModel.findById(req.params.id, (err, users) => {
+        this.UserModel.findById(req.params.id, (err, users) => {
             if (err) {
                 res.status(500);
                 res.send({ message: "internal server error", status: false, err: err });
@@ -39,7 +45,7 @@ export class UserController {
     }
 
     public update(req: Request, res: Response) {
-        UserModel.findById(req.params.id).then((user) => {
+        this.UserModel.findById(req.params.id).then((user) => {
             user.firstName = req.body.firstName;
             user.lastName = req.body.lastName;
             user.email = req.body.email;
@@ -55,7 +61,7 @@ export class UserController {
     }
 
     public patch(req: Request, res: Response) {
-        UserModel.findById(req.params.id).then((user) => {
+        this.UserModel.findById(req.params.id).then((user) => {
             for (var key in req.body) {
                 user[key] = req.body[key];
             }
@@ -70,7 +76,7 @@ export class UserController {
     }
 
     public delete(req: Request, res: Response) {
-        UserModel.findById(req.params.id).then((user) => {
+        this.UserModel.findById(req.params.id).then((user) => {
             if (user) {
                 return user.remove();
             } else {

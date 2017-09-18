@@ -3,7 +3,7 @@ import {Router, Request, Response, NextFunction} from 'express';
 import * as Passport from 'passport'
 
 import Api from './../controller/apiController'
-import SignUpController  from './../controller/signupController';
+
 import  UserRouter  from './userRouter';
 
 export class apiRouter {

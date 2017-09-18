@@ -1,28 +1,25 @@
 import { Router, Request, Response, NextFunction } from 'express';
-
 import { UserController } from './../controller/userController';
-
+import { UserModel } from './../model/user';
 
 export class UserRouter{
     router: Router;
-    controller :UserController;
-    constructor(){
-        this.controller = new UserController();
+    constructor(controller : UserController){
         this.router = Router();
-        this.init()
+        this.init(controller)
     }
 
-    init() {
+    init(controller : UserController) {
     this.router.route('/')
-    .get(this.controller.get)
-    .post(this.controller.add);
+    .get(controller.get.bind(controller))
+    .post(controller.add.bind(controller));
 
     this.router.route('/:id')
-    .get(this.controller.getById)
-    .put(this.controller.update)
-    .patch(this.controller.patch)
-    .delete(this.controller.delete);
+    .get(controller.getById.bind(controller))
+    .put(controller.update.bind(controller))
+    .patch(controller.patch.bind(controller))
+    .delete(controller.delete.bind(controller));
   }
 
 }
-export default new UserRouter().router;
+export default new UserRouter(new UserController(UserModel)).router;
