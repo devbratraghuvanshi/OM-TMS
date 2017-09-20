@@ -19,8 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
-        "metro.css"
+        "../src/assets/css/metro.css",
+        "../src/assets/css/metro-icons.css",
+        "../src/assets/css/metro-responsive.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
