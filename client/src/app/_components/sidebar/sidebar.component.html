@@ -1,0 +1,10 @@
+<div class="cell size-x200" id="cell-sidebar">
+  <ul class="sidebar">
+      <li *ngFor="let Item of TabItems"
+       [routerLinkActive]="['active']" ><a [routerLink]="Item.Link">
+        <span class="{{Item.IconClass}} icon"></span>
+        <span class="title">{{Item.Name}}</span>
+        <span class="counter">{{Item.Count}}</span>
+    </a>
+  </ul>
+</div>

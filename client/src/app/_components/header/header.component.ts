@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   BrandName = 'OM-TMS';
   UserName = 'Devbrat Raghuvanshi';
-
   constructor() { }
 
   ngOnInit() {
