@@ -8,6 +8,9 @@ import { AppComponent } from './_components/app/app.component';
 import { HeaderComponent } from './_components/header/header.component';
 import { SidebarComponent } from './_components/sidebar/sidebar.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -21,10 +24,12 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     SidebarComponent
-  ],
+    ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
