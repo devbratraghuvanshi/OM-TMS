@@ -25,6 +25,7 @@ export class apiRouter {
     this.router.get('/', Api.get);
     this.router.post('/register',Api.register);
     this.router.post('/authenticate',Api.authenticate);
+    this.router.get('/status',auth,Api.status);
     this.router.use('/user',auth, UserRouter);
   }
 }

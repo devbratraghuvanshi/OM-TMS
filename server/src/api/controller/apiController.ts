@@ -70,7 +70,9 @@ export class ApiController {
       });
     }
   }
-
+  public status(req: Request, res: Response, next: NextFunction) {
+    res.send({ status: true, msg: 'Authentication valid' });
+  }
 }
 
 export default new ApiController();

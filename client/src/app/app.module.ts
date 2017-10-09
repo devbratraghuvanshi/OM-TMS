@@ -1,3 +1,5 @@
+import { AuthService } from './_services/auth.service';
+import { AuthGuard } from './_services/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes  } from '@angular/router';
@@ -14,7 +16,7 @@ import { HttpModule } from '@angular/http';
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -31,7 +33,7 @@ const appRoutes: Routes = [
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

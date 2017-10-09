@@ -1,6 +1,6 @@
 import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { LoginService } from './../../_services/login.service';
+import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
   //   password: new FormControl("password", Validators.required)
   // });
 
-  private _loginService: LoginService;
+  private _loginService: AuthService;
 
   constructor(
     public fb: FormBuilder,
-    private loginService: LoginService,
+    private loginService: AuthService,
     private router: Router) {
     this._loginService = loginService;
 
