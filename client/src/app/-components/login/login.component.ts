@@ -1,6 +1,6 @@
 import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { AuthService } from './../../_services/auth.service';
+import { AuthService } from './../../-services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('TokenStatus');
   }
 
   public doLogin(event) {
