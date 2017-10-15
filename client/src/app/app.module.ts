@@ -3,6 +3,7 @@ import { AuthGuard } from './-services/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoginComponent } from './-components/login/login.component';
 import { DashboardComponent } from './-components/dashboard/dashboard.component';
@@ -17,6 +18,8 @@ import { PartiesComponent } from './-components/parties/parties.component';
 import { TrucksComponent } from './-components/trucks/trucks.component';
 import { DriversComponent } from './-components/drivers/drivers.component';
 import { StationsComponent } from './-components/stations/stations.component';
+import { DialogComponent } from './-components/dialog/dialog.component';
+import { BranchComponent } from './-components/branch/branch.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -45,13 +48,16 @@ const appRoutes: Routes = [
     PartiesComponent,
     TrucksComponent,
     DriversComponent,
-    StationsComponent
+    StationsComponent,
+    DialogComponent,
+    BranchComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
