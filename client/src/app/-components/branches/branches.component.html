@@ -4,7 +4,7 @@
     <button class="button primary" (click)="showDialog = !showDialog">
         <span class="mif-plus"></span> New </button>
         <app-dialog [(visible)]="showDialog"  [closable]="true">
-            <app-branch (cancelAddBranch)="showDialog = !showDialog"></app-branch>
+            <branch-form (cancelAddBranch)="showDialog = !showDialog"></branch-form>
             <!-- <button (click)="showDialog = !showDialog" class="btn">Close</button> -->
           </app-dialog>
     <button class="button success" onclick="pushMessage('success')">

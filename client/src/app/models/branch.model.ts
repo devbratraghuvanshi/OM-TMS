@@ -1,16 +1,19 @@
 
 export class Branch {
-    Id: String;
-    Name: String;
-    Code: String;
-    Address: String;
-    District: String;
-    State: String;
-    PIN: String;
-    Telephone: String;
-    Mobile: String;
-    Email: String;
-    Type: String;
-    IsAgency: boolean;
-    ContactPerson: String;
+    constructor(
+    Name: String,
+    Code: String,
+    Type: String,
+    IsAgency: boolean,
+    Email: String,
+    ContactPerson: String,
+    Address: String,
+    State: String,
+    District?: String,
+    PIN?: number,
+    Telephone?: String,
+    Mobile?: number,
+    Id?: String
+) {}
+
 }

@@ -1,0 +1,21 @@
+
+input {
+    padding-right: 39px;
+}
+select {
+        padding-right: 39px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+  input:disabled {
+    opacity: .5;
+}
+button:disabled {
+    opacity: .5;
+}

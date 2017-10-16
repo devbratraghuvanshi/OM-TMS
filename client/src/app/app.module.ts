@@ -11,7 +11,7 @@ import { AppComponent } from './-components/app/app.component';
 import { HeaderComponent } from './-components/header/header.component';
 import { SidebarComponent } from './-components/sidebar/sidebar.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BranchesComponent } from './-components/branches/branches.component';
 import { PartiesComponent } from './-components/parties/parties.component';
@@ -57,7 +57,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]

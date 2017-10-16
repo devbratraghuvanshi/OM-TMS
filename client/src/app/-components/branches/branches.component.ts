@@ -10,13 +10,13 @@ const Branches = [
     'Address': 'String',
     'District': 'String',
     'State': 'String',
-    'PIN': 'String',
+    'PIN': 233223,
     'Telephone': '9711259473',
-    'Mobile': '9711259473',
+    'Mobile': 9711259473,
     'Email': 'String',
     'Type': 'String',
     'IsAgency': true,
-    'ContactPerson': 'String'
+    'ContactPerson': 'Devbrat'
   },
   {
     'Id': '123',
@@ -25,13 +25,13 @@ const Branches = [
     'Address': 'String',
     'District': 'String',
     'State': 'String',
-    'PIN': 'String',
+    'PIN': 233223,
     'Telephone': '9711259473',
-    'Mobile': '9711259473',
+    'Mobile': 9711259473,
     'Email': 'String',
     'Type': 'String',
     'IsAgency': true,
-    'ContactPerson': 'String'
+    'ContactPerson':'Devbrat'
   },
   {
     'Id': '123',
@@ -40,13 +40,13 @@ const Branches = [
     'Address': 'String',
     'District': 'String',
     'State': 'String',
-    'PIN': 'String',
+    'PIN': 233223,
     'Telephone': '9711259473',
-    'Mobile': '9711259473',
+    'Mobile': 9711259473,
     'Email': 'String',
     'Type': 'String',
     'IsAgency': true,
-    'ContactPerson': 'String'
+    'ContactPerson': 'Devbrat'
   }
 ];
 

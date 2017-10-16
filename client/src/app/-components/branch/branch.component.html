@@ -1,70 +1,36 @@
+<form #branchForm="ngForm" (ngSubmit)="onSubmit()">
+    {{diagnostic}}
 <h1 class="text-light">
   Add Branch</h1>
 <hr class="thin">
 <br>
 <div class="input-control text full-size" data-role="input">
   <label for="Name">Name:</label>
-  <input type="text" name="Name" id="Name" style="padding-right: 39px;">
+  <input type="text" name="Name" id="Name" required 
+  [(ngModel)]="model.Name">
 </div>
 <br>
 <br>
 <div class="input-control text full-size" data-role="input">
   <label for="Code">Code:</label>
-  <input type="text" name="Code" id="Code" style="padding-right: 39px;">
-</div>
-<br>
-<br>
-<div class="input-control text full-size" data-role="input">
-  <label for="Address">Address:</label>
-  <input type="text" name="Address" id="Address" style="padding-right: 39px;">
-</div>
-<br>
-<br>
-<div class="input-control text full-size" data-role="input">
-  <label for="District">District:</label>
-  <input type="text" name="District" id="District" style="padding-right: 39px;">
-</div>
-<br>
-<br>
-<div class="input-control text full-size" data-role="input">
-  <label for="State">State:</label>
-  <input type="text" name="State" id="State" style="padding-right: 39px;">
-</div>
-<br>
-<br>
-<div class="input-control text full-size" data-role="input">
-  <label for="PIN">PIN Code:</label>
-  <input type="text" name="PIN" id="PIN" style="padding-right: 39px;">
-</div>
-<br>
-<br>
-<div class="input-control text full-size" data-role="input">
-  <label for="Telephone">Telephone:</label>
-  <input type="text" name="Telephone" id="Telephone" style="padding-right: 39px;">
-</div>
-<br>
-<br>
-<div class="input-control text full-size" data-role="input">
-  <label for="Mobile">Mobile:</label>
-  <input type="text" name="Mobile" id="Mobile" style="padding-right: 39px;">
-</div>
-<br>
-<br>
-<div class="input-control text full-size" data-role="input">
-  <label for="Email">Email:</label>
-  <input type="text" name="Email" id="Email" style="padding-right: 39px;">
+  <input type="text" name="Code" id="Code" required
+  [(ngModel)]="model.Code" >
 </div>
 <br>
 <br>
 <div class="input-control text full-size" data-role="input">
   <label for="Type">Type:</label>
-  <input type="text" name="Type" id="Type" style="padding-right: 39px;">
+  <select  name="Type" id="Type" required 
+  [(ngModel)]="model.Type">
+    <option *ngFor="let type of branchType" [value]="type.key">{{type.val}}</option>
+  </select>
 </div>
 <br>
 <br>
 <div class="input-control text full-size" data-role="input">
   <label for="IsAgency">Is Agency:</label>
-  <select nname="IsAgency" id="IsAgency" style="padding-right: 39px;">
+  <select name="IsAgency" id="IsAgency" required 
+  [(ngModel)]="model.IsAgency">
     <option value="">Select...</option>
     <option value="true">Yes</option>
     <option value="false">No</option>
@@ -73,12 +39,63 @@
 <br>
 <br>
 <div class="input-control text full-size" data-role="input">
+  <label for="Email">Email:</label>
+  <input type="email" name="Email" id="Email" required email
+  [(ngModel)]="model.Email">
+</div>
+<br>
+<br>
+<div class="input-control text full-size" data-role="input">
   <label for="ContactPerson">Contact Person:</label>
-  <input type="text" name="ContactPerson" id="ContactPerson" style="padding-right: 39px;">
+  <input type="text" name="ContactPerson" id="ContactPerson" required 
+  [(ngModel)]="model.ContactPerson">
+</div>
+<br>
+<br>
+<div class="input-control text full-size" data-role="input">
+  <label for="Address">Address:</label>
+  <input type="text" name="Address" id="Address" required
+  [(ngModel)]="model.Address">
+</div>
+<br>
+<br>
+<div class="input-control text full-size" data-role="input">
+  <label for="State">State:</label>
+  <input type="text" name="State" id="State" required 
+  [(ngModel)]="model.State">
+</div>
+<br>
+<br>
+<div class="input-control text full-size" data-role="input">
+  <label for="District">District:</label>
+  <input type="text" name="District" id="District" 
+  [(ngModel)]="model.District">
+</div>
+<br>
+<br>
+<div class="input-control text full-size" data-role="input">
+  <label for="PIN">PIN Code:</label>
+  <input type="number" name="PIN" id="PIN" 
+  [(ngModel)]="model.PIN">
+</div>
+<br>
+<br>
+<div class="input-control text full-size" data-role="input">
+  <label for="Telephone">Telephone:</label>
+  <input type="number" name="Telephone" id="Telephone" 
+  [(ngModel)]="model.Telephone">
+</div>
+<br>
+<br>
+<div class="input-control text full-size" data-role="input">
+  <label for="Mobile">Mobile:</label>
+  <input type="number" name="Mobile" id="Mobile" 
+  [(ngModel)]="model.Mobile">
 </div>
 <br>
 <br>
 <div class="form-actions">
-  <button type="submit" class="button primary">Save</button>
+  <button type="submit" class="button primary" [disabled]="!branchForm.form.valid">Save</button>
   <div type="button" class="button link" (click)="cancel()">Cancel</div>
 </div>
+</form>
