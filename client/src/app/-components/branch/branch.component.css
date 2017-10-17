@@ -6,7 +6,7 @@ select {
         padding-right: 39px;
 }
 
-.ng-valid[required], .ng-valid.required  {
+input.ng-valid, .ng-valid[required], .ng-valid.required  {
     border-left: 5px solid #42A948; /* green */
   }
   
