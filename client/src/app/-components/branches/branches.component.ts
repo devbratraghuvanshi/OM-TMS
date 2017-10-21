@@ -1,3 +1,4 @@
+import { BranchService } from './../../-services/branch.service';
 import { Branch } from './../../models/branch.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -61,9 +62,13 @@ export class BranchesComponent implements OnInit {
 
   public Branches: Branch[] = Branches;
   public showDialog = false;
-  constructor() { }
+  constructor(public service: BranchService) { }
 
   ngOnInit() {
+
+    this.service.GetBranches().then(branches => {
+      this.Branches = branches;
+    });
   }
 
 }

@@ -12,7 +12,9 @@ export class BranchService {
   }
 
  public GetBranches(): Promise<Branch[]> {
-    return this.http.get(this.branchUrl).toPromise()
+  const headers = new Headers({ 'Content-Type': 'application/json', Authorization: localStorage.getItem('token') });
+  const options = new RequestOptions({ headers: headers,  method: 'GET' });
+    return this.http.get(this.branchUrl, options).toPromise()
       .then(res => res.json() as Branch[])
       .catch(this.handleError);
   }
