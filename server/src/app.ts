@@ -34,6 +34,15 @@ class App {
 
   // Configure API endpoints.
   private routes(): void {
+    this.express.use('*',(req,res,next) =>{
+      if (req.method == "OPTIONS") {
+        res.status(200);
+        res.send();
+      }else{
+        next();
+      }
+      
+    });
     this.express.use('/api', apiRouter);
   }
   // Configure API endpoints.
@@ -49,7 +58,8 @@ class App {
   }
     private allowCORS (req, res, next): void {
       res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+      res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Accept, Authorization, Content-Type, X-Requested-With");
+      res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
       next();
   }
 }

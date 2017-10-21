@@ -1,3 +1,4 @@
+import { BranchService } from './-services/branch.service';
 import { AuthService } from './-services/auth.service';
 import { AuthGuard } from './-services/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, BranchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

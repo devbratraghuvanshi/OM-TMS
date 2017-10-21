@@ -1,3 +1,4 @@
+import { BranchService } from './../../-services/branch.service';
 import { Branch } from './../../models/branch.model';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
@@ -17,17 +18,23 @@ export class BranchComponent implements OnInit {
   'Devbrat', 'NA', 'UP', 'GZB', 233223, null, 9711259473);
   submitted = false;
 
-  constructor() { }
+  constructor(public service: BranchService) { }
 
-  onSubmit() { this.submitted = true;
-  console.log(this.model);
+  onSubmit() {
+    this.submitted = true;
+
+    this.service.AddBranch(this.model).then(res => {
+      console.log(res);
+    });
+
+
   }
 
   ngOnInit() {
   }
 
   // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+  // get diagnostic() { return JSON.stringify(this.model); }
 
   cancel() {
     this.cancelAddBranch.emit(false);
