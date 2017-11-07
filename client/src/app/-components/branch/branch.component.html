@@ -1,4 +1,4 @@
-<form #branchForm="ngForm" (ngSubmit)="onSubmit()">
+<form #branchForm="ngForm" (ngSubmit)="onSubmit(branchForm)">
   <!-- {{diagnostic}} -->
   <h1 class="text-light">
     Add Branch</h1>
@@ -54,7 +54,7 @@
   <br>
   <div class="input-control text full-size" data-role="input">
     <label for="State">State:</label>
-    <input type="text" name="State" id="State" required ngTrim="true" maxlength="30" minlength="3" pattern="^[a-zA-Z]*$" [(ngModel)]="model.State">
+    <input type="text" name="State" id="State" required ngTrim="true" maxlength="30" minlength="3" pattern="^[a-zA-Z ]*$" [(ngModel)]="model.State">
   </div>
   <br>
   <br>
@@ -86,4 +86,6 @@
     <button type="submit" class="button primary" [disabled]="!branchForm.form.valid">Save</button>
     <div type="button" class="button link" (click)="cancel()">Cancel</div>
   </div>
+  <br>
+  <div [style.color]="messageColor" >{{message}}</div>
 </form>

@@ -14,7 +14,6 @@ export interface IBranchModel extends Document {
     PIN?: Number;
     Telephone?: Number;
     Mobile?: Number;
-    Id?: String;
     createdAt: Date;
     modifiedAt: Date;
 };
