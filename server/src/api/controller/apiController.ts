@@ -37,7 +37,7 @@ export class ApiController {
       }).then(() => {
         res.json({ success: true, msg: 'Successfully created new user.' });
       }, (err) => {
-        return res.json({ success: false, msg: 'Username already exists.' });
+        return res.json({ success: false, msg: 'Username already exists.',err:err });
       });
 
     }

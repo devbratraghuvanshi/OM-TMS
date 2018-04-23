@@ -66,6 +66,11 @@ export class BranchesComponent implements OnInit {
 
   ngOnInit() {
 
+    this.UpdateBranchData();
+
+  }
+
+  UpdateBranchData() {
     this.service.GetBranches().then(branches => {
       this.Branches = branches;
     });

@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 export class BranchComponent implements OnInit {
 
   @Output() cancelAddBranch: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() addBranchStatus: EventEmitter<String> = new EventEmitter<String>();
 
   branchType = [{'key': '', 'val': 'Branch Type'}, {'key': '1', 'val': 'Booking'},
   {'key': '2', 'val': 'Delevery'}, {'key': '3', 'val': 'Both'} ]
@@ -33,9 +34,10 @@ export class BranchComponent implements OnInit {
         this.messageColor = 'lightGreen';
         branchForm.reset();
       }else {
-        this.message = 'Somthing went wrong attempt Unsuccessfull';
+        this.message = 'Something went wrong attempt Unsuccessful';
         this.messageColor = 'lightRed';
       }
+      this.addBranchStatus.emit(this.message);
     });
   }
 
@@ -48,4 +50,5 @@ export class BranchComponent implements OnInit {
   cancel() {
     this.cancelAddBranch.emit(false);
   }
+
 }
