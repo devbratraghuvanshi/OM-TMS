@@ -62,6 +62,7 @@ export class BranchesComponent implements OnInit {
 
   public Branches: Branch[] = Branches;
   public showDialog = false;
+  public BranchLink = '/dashboard/branch';
   constructor(public service: BranchService) { }
 
   ngOnInit() {
@@ -73,6 +74,8 @@ export class BranchesComponent implements OnInit {
   UpdateBranchData() {
     this.service.GetBranches().then(branches => {
       this.Branches = branches;
+      this.BranchLink =  '/dashboard/branch';
+
     });
   }
 

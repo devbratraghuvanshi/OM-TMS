@@ -1,16 +1,19 @@
 <div class="cell auto-size padding20 bg-white" id="cell-content">
     <h1 class="text-light">Branches</h1>
     <hr class="thin bg-grayLighter">
-    <button class="button primary" (click)="showDialog = !showDialog">
+    <!-- <button class="button primary" (click)="showDialog = !showDialog">
         <span class="mif-plus"></span> New </button>
         <app-dialog [(visible)]="showDialog"  [closable]="true">
-            <branch-form (cancelAddBranch)="showDialog = !showDialog"></branch-form>
-            <!-- <button (click)="showDialog = !showDialog" class="btn">Close</button> -->
-          </app-dialog>
+            <branch-form (cancelAddBranch)="showDialog = !showDialog"></branch-form>            
+          </app-dialog> -->
+    <button class="button primary" >
+                <a [routerLink]="BranchLink"><span class="mif-plus"></span> New </a>
+    </button>    
     <button class="button success" onclick="pushMessage('success')">
         <span class="mif-list"></span> Edit</button>
     <button class="button alert" onclick="pushMessage('alert')">
         <span class="mif-bin"></span> Delete</button>
+       
     <hr class="thin bg-grayLighter">
     <div id="Branches" class="dataTables_wrapper no-footer">
         <div id="DataTables_Table_0_filter" class="dataTables_filter">

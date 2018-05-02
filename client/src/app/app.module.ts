@@ -33,7 +33,8 @@ const appRoutes: Routes = [
       { path: 'parties',  component: PartiesComponent },
       { path: 'trucks',  component: TrucksComponent },
       { path: 'drivers',  component: DriversComponent },
-      { path: 'stations',  component: StationsComponent }
+      { path: 'stations',  component: StationsComponent },
+      { path: 'branch',  component: BranchComponent }
     ]
   }
 ];
