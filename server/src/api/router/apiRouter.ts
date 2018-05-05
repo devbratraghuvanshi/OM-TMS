@@ -1,6 +1,6 @@
 
 import { Router, Request, Response, NextFunction } from 'express';
-import * as Passport from 'passport'
+import { AuthHandler }from './../../auth/passportAuth'
 
 import Api from './../controller/apiController'
 
@@ -12,7 +12,7 @@ export class apiRouter {
   /**
    * Initialize the indexRouter
    */
-  constructor() {
+  constructor(private authHandler:any) {
     this.router = Router();
     this.init();
   }
@@ -22,14 +22,15 @@ export class apiRouter {
    * endpoints.
    */
   init() {
-    var auth = Passport.authenticate('jwt', { session: false });
+    var authHandler = this.authHandler;
     this.router.get('/', Api.get);
     this.router.post('/register', Api.register);
     this.router.post('/authenticate', Api.authenticate);
-    this.router.get('/status', auth, Api.status);
-    this.router.use('/user', auth, UserRouter);
-    this.router.use('/branch', auth, BranchRouter);
+    this.router.get('/status', authHandler, Api.status);
+    this.router.post('/logout', Api.logout);
+    this.router.use('/user', authHandler, UserRouter);
+    this.router.use('/branch', authHandler, BranchRouter);
   }
 }
 // Create the HeroRouter, and export its configured Express.Router
-export default new apiRouter().router;
+export default new apiRouter(AuthHandler).router;

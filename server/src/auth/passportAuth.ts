@@ -4,9 +4,15 @@ import { jWtSecret} from './../utility/utility'
 import UserCredential from './../api/model/userCredential'
 
 export class PassportAuth {
-    constructor() {
-        var strategy = new Strategy(
-            { secretOrKey: jWtSecret, jwtFromRequest: ExtractJwt.fromAuthHeader() }, // pass secretOrKey: "MyS3cr3tK3Y" from config file
+
+    public initialize() {
+        Passport.use(this.getStrategy());
+        return Passport.initialize();
+    }
+
+    private getStrategy():Strategy {
+        return new Strategy(
+            { secretOrKey: jWtSecret, jwtFromRequest: ExtractJwt.fromAuthHeader() },
             (jwt_payload, done) => {
                 UserCredential.findOne({ userId: jwt_payload.userId }, (err, credential) => {
                     if (credential) {
@@ -16,14 +22,15 @@ export class PassportAuth {
                     }
                 });
             });
-        Passport.use(strategy);
     }
 
-    public initialize() {
-        return Passport.initialize();
-    }
-    public authenticate() {
-        return Passport.authenticate("jwt", { session: false }); //pass {session: false}  from config file
+    public getAuthHandler() {
+        return Passport.authenticate("jwt", { session: false });
     }
 }
-export default new PassportAuth();
+
+const Auth = new PassportAuth();
+
+export const AuthHandler = Auth.getAuthHandler();
+
+export default Auth;

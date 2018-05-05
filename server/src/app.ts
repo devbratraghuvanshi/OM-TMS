@@ -5,7 +5,7 @@ import * as Mongoose from "mongoose";
 
 import { DB } from "./dbConfig/db"
 import apiRouter from './api/router/apiRouter';
-import passportAuth from './auth/Passport'
+import passportAuth from './auth/passportAuth'
 
 // Creates and configures an ExpressJS web server.
 class App {
