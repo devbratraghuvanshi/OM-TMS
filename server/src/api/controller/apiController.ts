@@ -1,7 +1,9 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import * as moment from 'moment'
 import * as utility from "./../../utility/utility"
 import { UserModel } from './../model/user';
 import UserCredential from './../model/userCredential';
+
 
 export class ApiController {
 
@@ -59,7 +61,10 @@ export class ApiController {
           userCredential.comparePassword(req.body.password, function (err, isMatch) {
             if (isMatch && !err) {
               // if user is found and password is right create a token
-              var token = utility.jwtEncode(userCredential);
+              const payload = Object.assign(userCredential);
+              payload.expires  = moment().add('days', 7).valueOf();
+
+              var token = utility.jwtEncode(payload);
               // return the information including token as JSON
               res.json({ success: true, token: 'JWT ' + token });
             } else {

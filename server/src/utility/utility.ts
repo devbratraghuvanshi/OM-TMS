@@ -4,11 +4,11 @@ import * as path from 'path';
 
 export const jWtSecret = "MyS3cr3tK3Y";
 
-export const jwtEncode  = function (data:any) {
-    return jwt.encode(data, jWtSecret);
+export const jwtEncode  = function (payload:any) {
+    return jwt.encode(payload, jWtSecret);
 };
-export const jwtDecode  = function (data:any) {
-     return jwt.decode(data, jWtSecret);
+export const jwtDecode  = function (payload:any) {
+     return jwt.decode(payload, jWtSecret);
 };
 
 export const getToken  = function (headers) {

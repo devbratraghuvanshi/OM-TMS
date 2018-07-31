@@ -2,21 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node2",
-            "request": "launch",
-            "name": "Launch Program",
-            "runtimeExecutable": "npm",
-            "windows": {
-                "runtimeExecutable": "npm.cmd"
-            },
-            "runtimeArgs": [
-                "run-script",
-                "start:debug"
-            ],
-            "cwd": "${workspaceRoot}/server/src",
-            "outFiles": [],
-            "port": 5858,
-            "sourceMaps": true
+            "type": "node",
+            "request": "attach",
+            "name": "Attach",
+            "port": 5858
         }
     ]
 }
