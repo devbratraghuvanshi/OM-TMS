@@ -13,10 +13,12 @@
 
   <div class="app-bar-element place-right">
       <span><span class="mif-user"></span> {{UserName}}</span>
+      <span><span class="mif-exit" (click)="logOut()" ></span></span>
   </div>
-  <div class="app-bar-pullbutton automatic" style="display: none;"></div>
+
+  <div class="app-bar-pullbutton automatic"></div>
   <div class="clearfix" style="width: 0;"></div>
-  <nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" style="display: none;">
+  <nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" >
       <ul class="app-bar-pullmenubar hidden app-bar-menu"></ul>
   </nav>
 </div>
