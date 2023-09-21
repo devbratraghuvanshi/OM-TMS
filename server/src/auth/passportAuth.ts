@@ -3,6 +3,7 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 import { jWtSecret} from './../utility/utility'
 import UserCredential from './../api/model/userCredential'
 
+//use this for autherization
 export class PassportAuth {
 
     public initialize() {
